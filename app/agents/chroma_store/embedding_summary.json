@@ -1,0 +1,70 @@
+{
+  "generated_at": "2025-11-13T19:54:58.567341",
+  "pdf_directory": "upsc_pyq_syllabus",
+  "persist_directory": "chroma_store",
+  "chunk_size": 500,
+  "chunk_overlap": 100,
+  "embedding_model": "all-mpnet-base-v2",
+  "syllabus": {
+    "total_pdfs": 2,
+    "total_chunks": 8,
+    "pdf_details": [
+      {
+        "name": "UPSC_CSE_Mains_Syllabus-1.pdf",
+        "chunks": 7,
+        "text_length": 9810
+      },
+      {
+        "name": "UPSC_CSE_Prelims_Syllabus-1.pdf",
+        "chunks": 1,
+        "text_length": 1125
+      }
+    ]
+  },
+  "pyq": {
+    "total_pdfs": 8,
+    "total_chunks": 283,
+    "pdf_details": [
+      {
+        "name": "Ancient_History_Previous_Year_Questions_UPSC.pdf",
+        "chunks": 22,
+        "text_length": 32004
+      },
+      {
+        "name": "Economy_questions_c64ad6834a.pdf",
+        "chunks": 48,
+        "text_length": 70446
+      },
+      {
+        "name": "geography_questions_in_UPSC_Prelims_05c936a1aa.pdf",
+        "chunks": 38,
+        "text_length": 56296
+      },
+      {
+        "name": "medieval_history_questions_00ce7a7764.pdf",
+        "chunks": 7,
+        "text_length": 9517
+      },
+      {
+        "name": "Modern_History_PYQ_PDF_e476b1546c.pdf",
+        "chunks": 19,
+        "text_length": 27506
+      },
+      {
+        "name": "polity_prelims_questions_a5ffe5d551.pdf",
+        "chunks": 63,
+        "text_length": 93864
+      },
+      {
+        "name": "Science_and_Technology_Questions_3388ce76bf.pdf",
+        "chunks": 34,
+        "text_length": 49175
+      },
+      {
+        "name": "UPSC_Prelims_Environment_Questions_0266ef64c8.pdf",
+        "chunks": 52,
+        "text_length": 77742
+      }
+    ]
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "total_pdfs": 2,
+  "total_chunks": 8,
+  "pdf_details": [
+    {
+      "name": "UPSC_CSE_Mains_Syllabus-1.pdf",
+      "chunks": 7,
+      "text_length": 9810
+    },
+    {
+      "name": "UPSC_CSE_Prelims_Syllabus-1.pdf",
+      "chunks": 1,
+      "text_length": 1125
+    }
+  ]
+}
