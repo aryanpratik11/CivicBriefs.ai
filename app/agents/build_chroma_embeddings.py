@@ -1,6 +1,5 @@
 """
-Build embeddings for UPSC Syllabus and PYQ PDFs
-Stores them separately in ChromaDB for semantic search
+Build embeddings for UPSC Syllabus,PYQ Stores them separately in ChromaDB for semantic search
 
 SUMMARY
 -------
