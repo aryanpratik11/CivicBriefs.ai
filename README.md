@@ -150,9 +150,178 @@ Output Files (Summary, Full, Text, Report)
 |----------------------|---------|-------------|
 | `NEWS_API_KEY1` | None | Primary News API key |
 | `NEWS_API_KEY2` | None | Backup News API key |
+| `HUGGINGFACE_TOKEN1` | None | HUGGINGFACE ACCESS TOKEN |
+| `HUGGINGFACE_TOKEN2` | None | HUGGINGFACE ACCESS TOKEN |
 | `SENTENCE_TRANSFORMER_MODEL` | all-mpnet-base-v2 | Embedding model name |
 | `MAX_CHARS_PER_CHUNK` | 1500 | Maximum characters per text chunk |
 | `CHUNK_OVERLAP` | 200 | Characters to overlap between chunks |
+
+   huggingface-cli login and enter the HUGGINGFACE_TOKEN ID 
+
+
+
+###  TO run the generate_news_capsule.py follow these 
+This project uses:
+
+WSL (Ubuntu) for running a fast local Llama 3.2–1B GGUF model
+
+Windows venv for running the Python pipeline (news → chroma → LLM → PDF)
+
+llama-cpp server for exposing GGUF as an OpenAI-compatible HTTP API
+
+This README ensures you never confuse WSL environment with Windows venv.
+
+📌 Overview of the Architecture
+┌──────────────────────┐
+│ Windows Environment  │
+│ venv/                │
+│ - runs pipeline      │
+│ - uses requests →    │──────────────┐
+└──────────────────────┘              │
+                                      │ HTTP (OpenAI compatible)
+                                      ▼
+                            ┌──────────────────────┐
+                            │ WSL Ubuntu           │
+                            │ venv: wsl-llama      │
+                            │ llama_cpp.server     │
+                            │ loads GGUF model     │
+                            └──────────────────────┘
+
+⚙️ 1. Install WSL and Ubuntu
+
+If not installed:
+
+wsl --install
+
+
+Then open Ubuntu from Start Menu.
+
+🧱 2. Create WSL venv (used ONLY for running llama-cpp local server)
+
+Inside Ubuntu:
+
+cd /mnt/c/Users/Admin/Documents/Codes/AI/CivicBriefs.ai
+python3 -m venv wsl-llama
+source wsl-llama/bin/activate
+
+
+You should now see:
+
+(wsl-llama) user@LAPTOP:/mnt/c/...
+
+📦 3. Install server dependencies in WSL
+
+These are ONLY installed inside WSL:
+
+python -m pip install --upgrade pip setuptools wheel
+python -m pip install llama-cpp-python fastapi uvicorn starlette sse-starlette starlette-context pydantic pydantic_settings
+
+🧰 4. Download the Quantized LLM in Windows
+
+Use your existing script:
+
+C:\...CivicBriefs.ai\app\agents\get_model.py
+
+
+This downloads:
+
+app/agents/models/llama-3.2-1b-instruct-q4_k_m.gguf
+
+🚀 5. Run the Llama Local Server in WSL
+
+Back in Ubuntu:
+
+source wsl-llama/bin/activate
+
+python -m llama_cpp.server \
+  --model "/mnt/c/Users/Admin/Documents/Codes/AI/CivicBriefs.ai/app/agents/models/llama-3.2-1b-instruct-q4_k_m.gguf" \
+  --host 0.0.0.0 \
+  --port 8000
+
+
+Expected output:
+
+INFO:     Uvicorn running on http://0.0.0.0:8000
+INFO:     Application startup complete.
+
+🧪 6. Test the Local LLM Endpoint
+
+From WSL or Windows PowerShell:
+
+curl http://localhost:8000/v1/models
+
+
+You should get:
+
+{"data":[{"id":"local-llama","object":"model"}]}
+
+🧪 7. Test text generation
+curl -X POST http://localhost:8000/v1/chat/completions \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "local-llama",
+    "messages": [{"role": "user", "content": "Say hello"}]
+  }'
+
+🧩 8. Your Windows venv (Pipeline Environment)
+
+⚠️ Do NOT install llama-cpp-python in Windows.
+
+Your Windows venv is only for:
+
+embeddings (SentenceTransformer)
+
+ChromaDB
+
+requests
+
+PDF generation
+
+your news pipeline scripts
+
+Activate it in Windows PowerShell only:
+
+cd "C:\Users\Admin\Documents\Codes\AI\CivicBriefs.ai"
+.\venv\Scripts\Activate.ps1
+
+
+Verify:
+
+python -m pip --version
+
+🔁 9. How Pipeline Communicates with WSL LLM
+
+Your updated pipeline uses:
+
+import requests
+
+def llama_local(prompt):
+    res = requests.post(
+        "http://localhost:8000/v1/chat/completions",
+        json={
+            "model": "local-llama",
+            "messages": [{"role": "user", "content": prompt}],
+            "temperature": 0.1,
+            "max_tokens": 512
+        }
+    )
+    return res.json()["choices"][0]["message"]["content"]
+
+
+No llama_cpp import is needed inside Windows.
+
+🏃 10. Run Full Pipeline (Windows venv)
+
+In PowerShell:
+
+cd "C:\Users\Admin\Documents\Codes\AI\CivicBriefs.ai"
+.\venv\Scripts\Activate.ps1
+
+
+python -m app.agents.generate_news_capsule   run from the main directory
+
+
+
 
 ## API & Services
 
