@@ -18,4 +18,4 @@ app.include_router(auth_router)
 
 @app.get("/")
 def home():
-    return {"message": "Welcome to CivicBriefs.AI 🚀"}
+    return {"message": "Welcome to CivicBriefs.AI"}
