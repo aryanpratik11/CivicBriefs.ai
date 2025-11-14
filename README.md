@@ -235,8 +235,10 @@ source wsl-llama/bin/activate
 
 python -m llama_cpp.server \
   --model "/mnt/c/Users/Admin/Documents/Codes/AI/CivicBriefs.ai/app/agents/models/llama-3.2-1b-instruct-q4_k_m.gguf" \
+  --n_ctx 4096 \
   --host 0.0.0.0 \
   --port 8000
+
 
 
 Expected output:
