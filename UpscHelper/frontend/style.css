@@ -1,0 +1,11 @@
+body { font-family: Arial, Helvetica, sans-serif; background:#f2f4f7; margin:0; padding:20px; }
+.container { max-width:900px; margin:0 auto; background:white; padding:20px; border-radius:8px; box-shadow:0 4px 14px rgba(0,0,0,0.06); }
+.controls { display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-bottom:18px; }
+.controls label { font-weight:600; }
+#testArea { margin-top:12px; }
+.question-card { border:1px solid #e6e9ee; padding:12px; border-radius:6px; margin-bottom:12px; background:#fff; }
+.options { margin-top:8px; }
+.option { display:block; margin:6px 0; }
+button { background:#1767d1; color:#fff; border:none; padding:8px 12px; border-radius:6px; cursor:pointer; }
+button:disabled { opacity:0.6; cursor:not-allowed; }
+#resultArea { margin-top:20px; padding:12px; background:#fbfbfb; border-radius:6px; }

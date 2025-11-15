@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>UPSC Helper — Test Result</title>
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <style>
+        .result-container {
+            max-width: 800px;
+            margin: 30px auto;
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 18px rgba(0,0,0,0.1);
+        }
+
+        .score-card {
+            background: #1a73e8;
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .accuracy-item {
+            margin: 12px 0;
+        }
+
+        .accuracy-bar {
+            height: 10px;
+            border-radius: 5px;
+            background: #ddd;
+            margin-top: 5px;
+        }
+
+        .accuracy-fill {
+            height: 10px;
+            border-radius: 5px;
+            background: #1a73e8;
+        }
+
+        .badge {
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 14px;
+            color: white;
+            margin-left: 10px;
+        }
+        .weak { background:#d9534f; }
+        .moderate { background:#f0ad4e; }
+        .strong { background:#5cb85c; }
+
+        .planner-btn {
+            margin-top: 25px;
+            width: 100%;
+            padding: 12px;
+            background: #ff9800;
+            color: white;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 18px;
+            cursor: pointer;
+            border: none;
+        }
+
+        .planner-box {
+            margin-top: 25px;
+            padding: 20px;
+            background: #f4f9ff;
+            border-left: 5px solid #1a73e8;
+            border-radius: 10px;
+            display: none;
+        }
+
+        .back-btn {
+            margin-top: 25px;
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: #1a73e8;
+            color: white;
+            border-radius: 8px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="result-container">
+    <h2>UPSC Test Result</h2>
+    <p id="testId"></p>
+
+    <div class="score-card">
+        <h1 id="scorePercent">0%</h1>
+        <p>Your overall score</p>
+    </div>
+
+    <h3>Subject-wise Accuracy</h3>
+    <div id="accuracyList"></div>
+
+    <!-- NEW: Planner Button -->
+    <button id="plannerBtn" class="planner-btn">Generate Personalized Study Planner</button>
+
+    <!-- NEW: Planner Output Section -->
+    <div id="plannerOutput" class="planner-box"></div>
+
+    <a href="index.html" class="back-btn">Take Another Test</a>
+</div>
+
+<script src="script.js"></script>
+
+<script>
+    const params = new URLSearchParams(window.location.search);
+    const testId = params.get("test_id");
+    loadTestResult(testId);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,969 @@
+[
+  {
+    "question_id": "POLITY_Q1",
+    "year": 2020,
+    "stage": "Prelims",
+    "subject": "Polity",
+    "topic": "Fundamental Rights",
+    "difficulty": "Medium",
+    "question": "Right to Privacy was declared a fundamental right under which Article?",
+    "options": {
+      "A": "Article 14",
+      "B": "Article 19",
+      "C": "Article 21",
+      "D": "Article 32"
+    },
+    "correct_answer": "C"
+  },
+  {
+    "question_id": "POLITY_Q2",
+    "year": 2018,
+    "stage": "Prelims",
+    "subject": "Polity",
+    "topic": "Parliament",
+    "difficulty": "Medium",
+    "question": "In India, Money Bills can be introduced only in:",
+    "options": {
+      "A": "Rajya Sabha",
+      "B": "Lok Sabha",
+      "C": "Either House of Parliament",
+      "D": "Joint Sitting of Parliament"
+    },
+    "correct_answer": "B"
+  },
+  {
+    "question_id": "POLITY_Q3",
+    "year": 2019,
+    "stage": "Prelims",
+    "subject": "Polity",
+    "topic": "Supreme Court",
+    "difficulty": "Hard",
+    "question": "Which of the following best describes ‘Judicial Review’?",
+    "options": {
+      "A": "Supreme Court reviews laws to check constitutionality",
+      "B": "Parliament reviews judgments",
+      "C": "President reviews laws",
+      "D": "Election Commission reviews electoral rolls"
+    },
+    "correct_answer": "A"
+  },
+  {
+    "question_id": "POLITY_Q4",
+    "year": 2017,
+    "stage": "Prelims",
+    "subject": "Polity",
+    "topic": "Constitution",
+    "difficulty": "Medium",
+    "question": "Which Schedule contains the division of subjects between Union and States?",
+    "options": {
+      "A": "7th Schedule",
+      "B": "9th Schedule",
+      "C": "6th Schedule",
+      "D": "10th Schedule"
+    },
+    "correct_answer": "A"
+  },
+  {
+    "question_id": "POLITY_Q5",
+    "year": 2016,
+    "stage": "Prelims",
+    "subject": "Polity",
+    "topic": "Amendments",
+    "difficulty": "Medium",
+    "question": "The 42nd Amendment Act is also known as the:",
+    "options": {
+      "A": "Mini-Constitution",
+      "B": "Fundamental Amendment",
+      "C": "Judicial Amendment",
+      "D": "Rights Amendment"
+    },
+    "correct_answer": "A"
+  },
+  {
+    "question_id": "POLITY_Q6",
+    "year": 2015,
+    "stage": "Prelims",
+    "subject": "Polity",
+    "topic": "President",
+    "difficulty": "Easy",
+    "question": "Who elects the President of India?",
+    "options": {
+      "A": "Only Members of Parliament",
+      "B": "Only Members of Legislative Assemblies",
+      "C": "Elected MPs and MLAs",
+      "D": "All MPs and MLAs"
+    },
+    "correct_answer": "C"
+  },
+  {
+    "question_id": "POLITY_Q7",
+    "year": 2021,
+    "stage": "Prelims",
+    "subject": "Polity",
+    "topic": "Governor",
+    "difficulty": "Medium",
+    "question": "Which of the following powers is discretionary for the Governor?",
+    "options": {
+      "A": "Reservation of Bills for President",
+      "B": "Appointment of Chief Minister",
+      "C": "Dissolving State Assembly",
+      "D": "Summoning the House"
+    },
+    "correct_answer": "A"
+  },
+  {
+    "question_id": "POLITY_Q8",
+    "year": 2014,
+    "stage": "Prelims",
+    "subject": "Polity",
+    "topic": "Panchayati Raj",
+    "difficulty": "Medium",
+    "question": "Which Amendment introduced Panchayati Raj in India?",
+    "options": {
+      "A": "72nd Amendment",
+      "B": "73rd Amendment",
+      "C": "74th Amendment",
+      "D": "78th Amendment"
+    },
+    "correct_answer": "B"
+  },
+  {
+    "question_id": "POLITY_Q9",
+    "year": 2013,
+    "stage": "Prelims",
+    "subject": "Polity",
+    "topic": "Emergency",
+    "difficulty": "Medium",
+    "question": "During National Emergency, which Fundamental Right is automatically suspended?",
+    "options": {
+      "A": "Article 32",
+      "B": "Article 14",
+      "C": "Article 19",
+      "D": "Article 21"
+    },
+    "correct_answer": "C"
+  },
+  {
+    "question_id": "POLITY_Q10",
+    "year": 2012,
+    "stage": "Prelims",
+    "subject": "Polity",
+    "topic": "Citizenship",
+    "difficulty": "Easy",
+    "question": "Citizenship in India is provided by:",
+    "options": {
+      "A": "Part I",
+      "B": "Part II",
+      "C": "Part III",
+      "D": "Part IV"
+    },
+    "correct_answer": "B"
+  },
+
+  {
+    "question_id": "HISTORY_Q1",
+    "year": 2020,
+    "stage": "Prelims",
+    "subject": "History",
+    "topic": "Modern India",
+    "difficulty": "Medium",
+    "question": "The Champaran Satyagraha of 1917 was related to:",
+    "options": {
+      "A": "Indigo plantation workers",
+      "B": "Salt manufacturing workers",
+      "C": "Tea plantation workers",
+      "D": "Railway labourers"
+    },
+    "correct_answer": "A"
+  },
+  {
+    "question_id": "HISTORY_Q2",
+    "year": 2018,
+    "stage": "Prelims",
+    "subject": "History",
+    "topic": "Ancient India",
+    "difficulty": "Hard",
+    "question": "Who among the following composed the Buddhist text ‘Milinda Panha’?",
+    "options": {
+      "A": "Nagasena",
+      "B": "Ashvaghosha",
+      "C": "Buddhaghosa",
+      "D": "Vasumitra"
+    },
+    "correct_answer": "A"
+  },
+  {
+    "question_id": "HISTORY_Q3",
+    "year": 2019,
+    "stage": "Prelims",
+    "subject": "History",
+    "topic": "Medieval India",
+    "difficulty": "Medium",
+    "question": "The Mansabdari system was introduced by which Mughal ruler?",
+    "options": {
+      "A": "Babur",
+      "B": "Akbar",
+      "C": "Jahangir",
+      "D": "Shah Jahan"
+    },
+    "correct_answer": "B"
+  },
+  {
+    "question_id": "HISTORY_Q4",
+    "year": 2021,
+    "stage": "Prelims",
+    "subject": "History",
+    "topic": "Modern India",
+    "difficulty": "Easy",
+    "question": "Who founded the Arya Samaj?",
+    "options": {
+      "A": "Dayanand Saraswati",
+      "B": "Raja Ram Mohan Roy",
+      "C": "Swami Vivekananda",
+      "D": "Keshav Chandra Sen"
+    },
+    "correct_answer": "A"
+  },
+  {
+    "question_id": "HISTORY_Q5",
+    "year": 2017,
+    "stage": "Prelims",
+    "subject": "History",
+    "topic": "Ancient India",
+    "difficulty": "Medium",
+    "question": "Which of the following was the capital of the Satavahana dynasty?",
+    "options": {
+      "A": "Amaravati",
+      "B": "Pratishthana",
+      "C": "Pataliputra",
+      "D": "Vaishali"
+    },
+    "correct_answer": "B"
+  },
+  {
+    "question_id": "HISTORY_Q6",
+    "year": 2015,
+    "stage": "Prelims",
+    "subject": "History",
+    "topic": "Medieval India",
+    "difficulty": "Medium",
+    "question": "Who built the Qutub Minar?",
+    "options": {
+      "A": "Iltutmish",
+      "B": "Qutb-ud-din Aibak",
+      "C": "Alauddin Khalji",
+      "D": "Balban"
+    },
+    "correct_answer": "B"
+  },
+  {
+    "question_id": "HISTORY_Q7",
+    "year": 2016,
+    "stage": "Prelims",
+    "subject": "History",
+    "topic": "Modern India",
+    "difficulty": "Medium",
+    "question": "The ‘Doctrine of Lapse’ was introduced by:",
+    "options": {
+      "A": "Warren Hastings",
+      "B": "Lord Dalhousie",
+      "C": "Lord Wellesley",
+      "D": "Lord Ripon"
+    },
+    "correct_answer": "B"
+  },
+  {
+    "question_id": "HISTORY_Q8",
+    "year": 2014,
+    "stage": "Prelims",
+    "subject": "History",
+    "topic": "Ancient India",
+    "difficulty": "Medium",
+    "question": "The Rigveda consists of how many hymns?",
+    "options": {
+      "A": "1000",
+      "B": "1028",
+      "C": "1200",
+      "D": "950"
+    },
+    "correct_answer": "B"
+  },
+  {
+    "question_id": "HISTORY_Q9",
+    "year": 2013,
+    "stage": "Prelims",
+    "subject": "History",
+    "topic": "Modern India",
+    "difficulty": "Easy",
+    "question": "Who was the Viceroy during the Quit India Movement?",
+    "options": {
+      "A": "Lord Linlithgow",
+      "B": "Lord Mountbatten",
+      "C": "Lord Chelmsford",
+      "D": "Lord Wavell"
+    },
+    "correct_answer": "A"
+  },
+  {
+    "question_id": "HISTORY_Q10",
+    "year": 2012,
+    "stage": "Prelims",
+    "subject": "History",
+    "topic": "Medieval India",
+    "difficulty": "Medium",
+    "question": "What was the official language of the Delhi Sultanate?",
+    "options": {
+      "A": "Persian",
+      "B": "Arabic",
+      "C": "Sanskrit",
+      "D": "Urdu"
+    },
+    "correct_answer": "A"
+  }
+  ,
+  {
+    "question_id": "ECONOMY_Q1",
+    "year": 2020,
+    "stage": "Prelims",
+    "subject": "Economy",
+    "topic": "Inflation",
+    "difficulty": "Medium",
+    "question": "Which index is used in India to measure headline inflation?",
+    "options": {
+      "A": "CPI",
+      "B": "WPI",
+      "C": "IIP",
+      "D": "GDP Deflator"
+    },
+    "correct_answer": "A"
+  },
+  {
+    "question_id": "ECONOMY_Q2",
+    "year": 2019,
+    "stage": "Prelims",
+    "subject": "Economy",
+    "topic": "Taxation",
+    "difficulty": "Medium",
+    "question": "Goods and Services Tax (GST) is a:",
+    "options": {
+      "A": "Direct tax",
+      "B": "Indirect tax",
+      "C": "Corporate tax",
+      "D": "Excise tax"
+    },
+    "correct_answer": "B"
+  },
+  {
+    "question_id": "ECONOMY_Q3",
+    "year": 2021,
+    "stage": "Prelims",
+    "subject": "Economy",
+    "topic": "Banking",
+    "difficulty": "Medium",
+    "question": "CRR is maintained by banks with:",
+    "options": {
+      "A": "Ministry of Finance",
+      "B": "RBI",
+      "C": "NABARD",
+      "D": "SEBI"
+    },
+    "correct_answer": "B"
+  },
+  {
+    "question_id": "ECONOMY_Q4",
+    "year": 2017,
+    "stage": "Prelims",
+    "subject": "Economy",
+    "topic": "Growth",
+    "difficulty": "Medium",
+    "question": "GDP at constant prices is known as:",
+    "options": {
+      "A": "Nominal GDP",
+      "B": "Real GDP",
+      "C": "Fiscal GDP",
+      "D": "Base GDP"
+    },
+    "correct_answer": "B"
+  },
+  {
+    "question_id": "ECONOMY_Q5",
+    "year": 2018,
+    "stage": "Prelims",
+    "subject": "Economy",
+    "topic": "Budget",
+    "difficulty": "Medium",
+    "question": "The largest source of revenue for the Union Government is:",
+    "options": {
+      "A": "GST",
+      "B": "Income Tax",
+      "C": "Borrowings",
+      "D": "Corporate Tax"
+    },
+    "correct_answer": "D"
+  },
+  {
+    "question_id": "ECONOMY_Q6",
+    "year": 2015,
+    "stage": "Prelims",
+    "subject": "Economy",
+    "topic": "Banking",
+    "difficulty": "Easy",
+    "question": "What does ‘Repo Rate’ mean?",
+    "options": {
+      "A": "Rate at which banks borrow from RBI",
+      "B": "Rate at which RBI borrows from banks",
+      "C": "Rate of interbank lending",
+      "D": "Rate of RBI bond issue"
+    },
+    "correct_answer": "A"
+  },
+  {
+    "question_id": "ECONOMY_Q7",
+    "year": 2014,
+    "stage": "Prelims",
+    "subject": "Economy",
+    "topic": "External Sector",
+    "difficulty": "Medium",
+    "question": "Current Account Deficit means:",
+    "options": {
+      "A": "Export > Import",
+      "B": "Import > Export",
+      "C": "FDI > FII",
+      "D": "GDP < GNP"
+    },
+    "correct_answer": "B"
+  },
+  {
+    "question_id": "ECONOMY_Q8",
+    "year": 2013,
+    "stage": "Prelims",
+    "subject": "Economy",
+    "topic": "Fiscal Policy",
+    "difficulty": "Medium",
+    "question": "Fiscal deficit is:",
+    "options": {
+      "A": "Total expenditure minus total revenue",
+      "B": "Total revenue minus total expenditure",
+      "C": "Only capital expenditure",
+      "D": "Only revenue expenditure"
+    },
+    "correct_answer": "A"
+  },
+  {
+    "question_id": "ECONOMY_Q9",
+    "year": 2012,
+    "stage": "Prelims",
+    "subject": "Economy",
+    "topic": "Poverty",
+    "difficulty": "Medium",
+    "question": "Which committee estimated poverty using calorie intake?",
+    "options": {
+      "A": "Lakdawala Committee",
+      "B": "Rangarajan Committee",
+      "C": "Tendulkar Committee",
+      "D": "NITI Aayog Committee"
+    },
+    "correct_answer": "A"
+  },
+  {
+    "question_id": "ECONOMY_Q10",
+    "year": 2011,
+    "stage": "Prelims",
+    "subject": "Economy",
+    "topic": "Infrastructure",
+    "difficulty": "Medium",
+    "question": "UDAY scheme was launched for:",
+    "options": {
+      "A": "Bank recapitalization",
+      "B": "Power distribution companies",
+      "C": "Agriculture sector",
+      "D": "Start-up financing"
+    },
+    "correct_answer": "B"
+  }
+  ,
+
+ {
+    "question_id": "GEOGRAPHY_Q1",
+    "year": 2021,
+    "stage": "Prelims",
+    "subject": "Geography",
+    "topic": "Physical Geography",
+    "difficulty": "Medium",
+    "question": "Westerly winds in the temperate region blow from:",
+    "options": {
+      "A": "High-pressure subtropics to low-pressure subpolar regions",
+      "B": "Equator to poles",
+      "C": "Poles to equator",
+      "D": "High-pressure polar regions to subtropics"
+    },
+    "correct_answer": "A"
+  },
+  {
+    "question_id": "GEOGRAPHY_Q2",
+    "year": 2019,
+    "stage": "Prelims",
+    "subject": "Geography",
+    "topic": "Indian Geography",
+    "difficulty": "Medium",
+    "question": "Which of the following rivers originates from the Amarkantak plateau?",
+    "options": {
+      "A": "Godavari",
+      "B": "Mahanadi",
+      "C": "Narmada",
+      "D": "Cauvery"
+    },
+    "correct_answer": "C"
+  },
+  {
+    "question_id": "GEOGRAPHY_Q3",
+    "year": 2020,
+    "stage": "Prelims",
+    "subject": "Geography",
+    "topic": "Climate",
+    "difficulty": "Easy",
+    "question": "El Niño refers to:",
+    "options": {
+      "A": "Warming of Pacific Ocean waters",
+      "B": "Cooling of Atlantic Ocean",
+      "C": "Heating of Arabian Sea",
+      "D": "Reversal of monsoon winds"
+    },
+    "correct_answer": "A"
+  },
+  {
+    "question_id": "GEOGRAPHY_Q4",
+    "year": 2018,
+    "stage": "Prelims",
+    "subject": "Geography",
+    "topic": "Resources",
+    "difficulty": "Medium",
+    "question": "Which region is known for laterite soil?",
+    "options": {
+      "A": "Himalayan region",
+      "B": "Western Ghats",
+      "C": "Gangetic plains",
+      "D": "Thar Desert"
+    },
+    "correct_answer": "B"
+  },
+  {
+    "question_id": "GEOGRAPHY_Q5",
+    "year": 2017,
+    "stage": "Prelims",
+    "subject": "Geography",
+    "topic": "Agriculture",
+    "difficulty": "Medium",
+    "question": "Which of the following crops requires cool climate and hill slopes?",
+    "options": {
+      "A": "Cotton",
+      "B": "Tea",
+      "C": "Rice",
+      "D": "Jute"
+    },
+    "correct_answer": "B"
+  },
+  {
+    "question_id": "GEOGRAPHY_Q6",
+    "year": 2022,
+    "stage": "Prelims",
+    "subject": "Geography",
+    "topic": "Indian Geography",
+    "difficulty": "Hard",
+    "question": "The Zojila Pass connects which regions?",
+    "options": {
+      "A": "Leh and Srinagar",
+      "B": "Manali and Leh",
+      "C": "Sikkim and Tibet",
+      "D": "Arunachal Pradesh and Myanmar"
+    },
+    "correct_answer": "A"
+  },
+  {
+    "question_id": "GEOGRAPHY_Q7",
+    "year": 2014,
+    "stage": "Prelims",
+    "subject": "Geography",
+    "topic": "Oceans",
+    "difficulty": "Medium",
+    "question": "Which ocean current is warm?",
+    "options": {
+      "A": "Gulf Stream",
+      "B": "Labrador Current",
+      "C": "Humboldt Current",
+      "D": "Oyashio Current"
+    },
+    "correct_answer": "A"
+  },
+  {
+    "question_id": "GEOGRAPHY_Q8",
+    "year": 2015,
+    "stage": "Prelims",
+    "subject": "Geography",
+    "topic": "Geology",
+    "difficulty": "Medium",
+    "question": "Basalt rocks are formed due to:",
+    "options": {
+      "A": "Sedimentation",
+      "B": "Volcanic activity",
+      "C": "Metamorphism",
+      "D": "Compaction"
+    },
+    "correct_answer": "B"
+  },
+  {
+    "question_id": "GEOGRAPHY_Q9",
+    "year": 2013,
+    "stage": "Prelims",
+    "subject": "Geography",
+    "topic": "World Geography",
+    "difficulty": "Medium",
+    "question": "Sahara Desert is located in which part of Africa?",
+    "options": {
+      "A": "Northern",
+      "B": "Southern",
+      "C": "Western",
+      "D": "Eastern"
+    },
+    "correct_answer": "A"
+  },
+  {
+    "question_id": "GEOGRAPHY_Q10",
+    "year": 2012,
+    "stage": "Prelims",
+    "subject": "Geography",
+    "topic": "Climate",
+    "difficulty": "Medium",
+    "question": "Monsoon in India is primarily influenced by:",
+    "options": {
+      "A": "Temperature gradient",
+      "B": "ITCZ shift",
+      "C": "Earth’s axial tilt",
+      "D": "Ocean salinity"
+    },
+    "correct_answer": "B"
+  }
+  ,
+{
+    "question_id": "ENV_Q1",
+    "year": 2021,
+    "stage": "Prelims",
+    "subject": "Environment",
+    "topic": "Ecology",
+    "difficulty": "Medium",
+    "question": "Biodiversity hotspots are characterized by:",
+    "options": {
+      "A": "Low endemism",
+      "B": "High species richness",
+      "C": "Low productivity",
+      "D": "Cold climate"
+    },
+    "correct_answer": "B"
+  },
+  {
+    "question_id": "ENV_Q2",
+    "year": 2018,
+    "stage": "Prelims",
+    "subject": "Environment",
+    "topic": "Pollution",
+    "difficulty": "Medium",
+    "question": "PM2.5 refers to:",
+    "options": {
+      "A": "Particulate matter with diameter < 2.5 microns",
+      "B": "Pollutants from automobiles",
+      "C": "Carbon dioxide emissions",
+      "D": "Heavy metals in water"
+    },
+    "correct_answer": "A"
+  },
+  {
+    "question_id": "ENV_Q3",
+    "year": 2020,
+    "stage": "Prelims",
+    "subject": "Environment",
+    "topic": "Climate Change",
+    "difficulty": "Medium",
+    "question": "The Kigali Amendment relates to the phase-down of:",
+    "options": {
+      "A": "CO₂",
+      "B": "HFCs",
+      "C": "CFCs",
+      "D": "SO₂"
+    },
+    "correct_answer": "B"
+  },
+  {
+    "question_id": "ENV_Q4",
+    "year": 2019,
+    "stage": "Prelims",
+    "subject": "Environment",
+    "topic": "Act & Laws",
+    "difficulty": "Medium",
+    "question": "Under which Act is the National Green Tribunal (NGT) established?",
+    "options": {
+      "A": "Environment Protection Act",
+      "B": "Forest Conservation Act",
+      "C": "NGT Act",
+      "D": "Wildlife Protection Act"
+    },
+    "correct_answer": "C"
+  },
+  {
+    "question_id": "ENV_Q5",
+    "year": 2017,
+    "stage": "Prelims",
+    "subject": "Environment",
+    "topic": "Species",
+    "difficulty": "Medium",
+    "question": "The Red Data Book is maintained by:",
+    "options": {
+      "A": "UNFCCC",
+      "B": "IPCC",
+      "C": "IUCN",
+      "D": "UNEP"
+    },
+    "correct_answer": "C"
+  },
+  {
+    "question_id": "ENV_Q6",
+    "year": 2016,
+    "stage": "Prelims",
+    "subject": "Environment",
+    "topic": "Pollution",
+    "difficulty": "Medium",
+    "question": "Which gas has the highest global warming potential?",
+    "options": {
+      "A": "CO₂",
+      "B": "CH₄",
+      "C": "N₂O",
+      "D": "SF₆"
+    },
+    "correct_answer": "D"
+  },
+  {
+    "question_id": "ENV_Q7",
+    "year": 2014,
+    "stage": "Prelims",
+    "subject": "Environment",
+    "topic": "Conservation",
+    "difficulty": "Medium",
+    "question": "Project Tiger was launched in:",
+    "options": {
+      "A": "1973",
+      "B": "1982",
+      "C": "1968",
+      "D": "1956"
+    },
+    "correct_answer": "A"
+  },
+  {
+    "question_id": "ENV_Q8",
+    "year": 2015,
+    "stage": "Prelims",
+    "subject": "Environment",
+    "topic": "Ecosystems",
+    "difficulty": "Easy",
+    "question": "Mangroves require which condition?",
+    "options": {
+      "A": "Fresh water",
+      "B": "Low temperature",
+      "C": "Saline water",
+      "D": "High altitude"
+    },
+    "correct_answer": "C"
+  },
+  {
+    "question_id": "ENV_Q9",
+    "year": 2013,
+    "stage": "Prelims",
+    "subject": "Environment",
+    "topic": "UN Conventions",
+    "difficulty": "Medium",
+    "question": "The Paris Agreement focuses on:",
+    "options": {
+      "A": "Reducing nuclear arms",
+      "B": "Promoting world peace",
+      "C": "Climate change mitigation",
+      "D": "Conservation of oceans"
+    },
+    "correct_answer": "C"
+  },
+  {
+    "question_id": "ENV_Q10",
+    "year": 2012,
+    "stage": "Prelims",
+    "subject": "Environment",
+    "topic": "Ecosystems",
+    "difficulty": "Medium",
+    "question": "Coral bleaching occurs due to:",
+    "options": {
+      "A": "Decrease in water salinity",
+      "B": "Increase in sea temperature",
+      "C": "Underwater volcanic eruptions",
+      "D": "Oil spills"
+    },
+    "correct_answer": "B"
+  }
+,
+
+  {
+    "question_id": "SCI_Q1",
+    "year": 2021,
+    "stage": "Prelims",
+    "subject": "ScienceTech",
+    "topic": "Biotechnology",
+    "difficulty": "Medium",
+    "question": "CRISPR technology is primarily used for:",
+    "options": {
+      "A": "Gene editing",
+      "B": "Satellite navigation",
+      "C": "Renewable energy production",
+      "D": "Quantum communication"
+    },
+    "correct_answer": "A"
+  },
+  {
+    "question_id": "SCI_Q2",
+    "year": 2018,
+    "stage": "Prelims",
+    "subject": "ScienceTech",
+    "topic": "Space",
+    "difficulty": "Medium",
+    "question": "The term ‘Geostationary Orbit’ refers to an orbit:",
+    "options": {
+      "A": "Where satellite appears stationary to Earth",
+      "B": "Closest to Earth’s surface",
+      "C": "Used only for weather satellites",
+      "D": "Where the satellite moves westward"
+    },
+    "correct_answer": "A"
+  },
+  {
+    "question_id": "SCI_Q3",
+    "year": 2020,
+    "stage": "Prelims",
+    "subject": "ScienceTech",
+    "topic": "Physics",
+    "difficulty": "Medium",
+    "question": "Which wave has the highest frequency?",
+    "options": {
+      "A": "Ultraviolet rays",
+      "B": "Gamma rays",
+      "C": "Microwaves",
+      "D": "Infrared rays"
+    },
+    "correct_answer": "B"
+  },
+  {
+    "question_id": "SCI_Q4",
+    "year": 2019,
+    "stage": "Prelims",
+    "subject": "ScienceTech",
+    "topic": "Biology",
+    "difficulty": "Medium",
+    "question": "Insulin is produced in which organ?",
+    "options": {
+      "A": "Liver",
+      "B": "Pancreas",
+      "C": "Kidney",
+      "D": "Small Intestine"
+    },
+    "correct_answer": "B"
+  },
+  {
+    "question_id": "SCI_Q5",
+    "year": 2017,
+    "stage": "Prelims",
+    "subject": "ScienceTech",
+    "topic": "Space Technology",
+    "difficulty": "Medium",
+    "question": "What is the function of a spectrometer?",
+    "options": {
+      "A": "Measure speed",
+      "B": "Analyze light spectrum",
+      "C": "Measure mass",
+      "D": "Detect electric charge"
+    },
+    "correct_answer": "B"
+  },
+  {
+    "question_id": "SCI_Q6",
+    "year": 2016,
+    "stage": "Prelims",
+    "subject": "ScienceTech",
+    "topic": "Chemistry",
+    "difficulty": "Medium",
+    "question": "Which gas is used in the Haber process?",
+    "options": {
+      "A": "Oxygen",
+      "B": "Nitrogen",
+      "C": "Chlorine",
+      "D": "Hydrogen"
+    },
+    "correct_answer": "B"
+  },
+  {
+    "question_id": "SCI_Q7",
+    "year": 2015,
+    "stage": "Prelims",
+    "subject": "ScienceTech",
+    "topic": "Computers",
+    "difficulty": "Medium",
+    "question": "What does ‘HTTP’ stand for?",
+    "options": {
+      "A": "Hyper Terminal Transfer Protocol",
+      "B": "Hyper Text Transfer Protocol",
+      "C": "Hybrid Telecommunication Protocol",
+      "D": "High Transfer Type Process"
+    },
+    "correct_answer": "B"
+  },
+  {
+    "question_id": "SCI_Q8",
+    "year": 2014,
+    "stage": "Prelims",
+    "subject": "ScienceTech",
+    "topic": "Physics",
+    "difficulty": "Medium",
+    "question": "The unit of electric resistance is:",
+    "options": {
+      "A": "Ampere",
+      "B": "Volt",
+      "C": "Ohm",
+      "D": "Watt"
+    },
+    "correct_answer": "C"
+  },
+  {
+    "question_id": "SCI_Q9",
+    "year": 2013,
+    "stage": "Prelims",
+    "subject": "ScienceTech",
+    "topic": "Biology",
+    "difficulty": "Medium",
+    "question": "DNA fingerprinting was first developed by:",
+    "options": {
+      "A": "James Watson",
+      "B": "Francis Crick",
+      "C": "Alec Jeffreys",
+      "D": "Gregor Mendel"
+    },
+    "correct_answer": "C"
+  },
+  {
+    "question_id": "SCI_Q10",
+    "year": 2012,
+    "stage": "Prelims",
+    "subject": "ScienceTech",
+    "topic": "Environment",
+    "difficulty": "Medium",
+    "question": "Ozone layer is found in which layer of the atmosphere?",
+    "options": {
+      "A": "Troposphere",
+      "B": "Stratosphere",
+      "C": "Mesosphere",
+      "D": "Exosphere"
+    },
+    "correct_answer": "B"
+  }
+]
