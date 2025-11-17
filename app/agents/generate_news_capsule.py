@@ -39,6 +39,7 @@ import requests
 
 # import your news collector
 from app.agents.news_collection import collect_news_embeddings
+from app.services.news_store import news_store
 
 # reportlab for PDF generation
 from reportlab.lib.pagesizes import A4
@@ -511,6 +512,16 @@ def run(fetch_limit: int = 30):
         json.dump(output_structure, f, indent=2, default=str)
 
     logger.info("Saved Markdown -> %s and JSON -> %s", MD_FILENAME, JSON_FILENAME)
+
+    persisted = news_store.save_capsule(
+        capsule_payload={"structure": output_structure, "markdown": md_text},
+        capsule_date=TODAY,
+        capsule_type="daily",
+    )
+    if persisted:
+        logger.info("News capsule stored in MongoDB collection 'news'.")
+    else:
+        logger.warning("News capsule could not be stored in MongoDB. Continuing with local artifacts.")
 
     # Create PDF
     logger.info("Generating PDF -> %s", PDF_FILENAME)

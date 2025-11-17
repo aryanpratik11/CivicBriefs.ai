@@ -40,6 +40,7 @@ CivicBriefs.ai/
 ### Prerequisites
 - Python 3.8 or higher
 - pip package manager
+- MongoDB 4.4+ (local instance or hosted Atlas cluster)
 - News API key (from [newsapi.org](https://newsapi.org))
 
 ### Setup
@@ -62,16 +63,45 @@ CivicBriefs.ai/
    ```
 
 4. **Configure environment variables:**
-   Create a `.env` file in the project root:
+     Create a `.env` file in the project root (the default configuration expects a MongoDB Atlas URI):
    ```
    NEWS_API_KEY1=your_news_api_key_here
    NEWS_API_KEY2=your_backup_news_api_key_here
    SENTENCE_TRANSFORMER_MODEL=all-mpnet-base-v2
    MAX_CHARS_PER_CHUNK=1500
    CHUNK_OVERLAP=200
+        MONGODB_URI=mongodb+srv://<user>:<password>@<cluster-host>/?retryWrites=true&w=majority
+        MONGODB_DB=civicbriefs
    ```
 
+### MongoDB Atlas configuration
+
+- Create a free or paid cluster in [MongoDB Atlas](https://www.mongodb.com/atlas) and add your current IP to the network allow list.
+- Create a database user with `readWrite` access to the `civicbriefs` database (or your preferred name) and plug the credentials into the `MONGODB_URI` string above.
+- Optional variables:
+    - `MONGODB_SELECTION_TIMEOUT_MS` (default `5000`) controls how long the driver waits for a healthy node.
+    - `MONGODB_TLS_ALLOW_INVALID_CERTS` can be set to `1` when using self-signed certificates during development.
+    - `MONGODB_DB` selects the logical database; set it if you don't want to use the default `civicbriefs`.
+
+> JSON fallbacks have been removed—if MongoDB is unreachable, the API will now fail fast so you can fix the Atlas configuration rather than silently writing to local files.
+
 ## Usage
+
+### Running the API (development)
+
+The FastAPI server now defaults to port **8005**. Pick either of these commands:
+
+```bash
+# Recommended: keeps reload watchers scoped to app/, web/, and data/
+python scripts/dev_server.py
+
+# Shortcut: same settings, handy for ad-hoc runs
+python -m app
+```
+
+Both launchers call `uvicorn app.main:app` with `--reload` and honor the
+`APP_HOST`, `APP_PORT`, and `APP_RELOAD` environment variables if you need to
+override the defaults.
 
 ### Running the News Collection
 
@@ -109,6 +139,14 @@ The application generates the following output files:
 | `embeddings_full.json` | Complete data with vector embeddings |
 | `articles_text.json` | Raw text content organized by article |
 | `collection_report.txt` | Human-readable summary report |
+
+## Data Storage
+
+- **MongoDB collections** now hold application data (no JSON fallbacks):
+    - `users` for account profiles and hashed credentials.
+    - `sessions` for short-lived auth tokens (TTL-based cleanup).
+    - `subscribers` for daily capsule recipients.
+- **ChromaDB** continues to manage vector embeddings inside `app/agents/chroma_store/`.
 
 ## Dependencies
 
@@ -155,6 +193,11 @@ Output Files (Summary, Full, Text, Report)
 | `SENTENCE_TRANSFORMER_MODEL` | all-mpnet-base-v2 | Embedding model name |
 | `MAX_CHARS_PER_CHUNK` | 1500 | Maximum characters per text chunk |
 | `CHUNK_OVERLAP` | 200 | Characters to overlap between chunks |
+| `MONGODB_URI` | mongodb://localhost:27017 | Connection string for the primary MongoDB deployment |
+| `MONGODB_DB` | civicbriefs | Database where `users`, `sessions`, and `subscribers` collections live |
+| `APP_HOST` | 127.0.0.1 | Host interface for the FastAPI dev server |
+| `APP_PORT` | 8005 | Port for the FastAPI dev server |
+| `APP_RELOAD` | true | Toggle hot-reload when using the bundled launchers |
 
    huggingface-cli login and enter the HUGGINGFACE_TOKEN ID 
 

@@ -186,11 +186,18 @@ def generate_news_capsule(
     # -----------------------------------------
     if not embedded_chunks:
         logger.warning("No embedded chunks provided.")
+        md_text = f"# News Capsule — Date: {date_str}\n\n_No articles collected_\n"
         with open(md_path, "w", encoding="utf-8") as f:
-            f.write(f"# News Capsule — Date: {date_str}\n\n_No articles collected_\n")
+            f.write(md_text)
         with open(json_path, "w", encoding="utf-8") as f:
             json.dump({}, f, indent=2)
-        return md_path
+        return {
+            "md_path": md_path,
+            "json_path": json_path,
+            "date": date_str,
+            "structure": {},
+            "markdown": md_text,
+        }
 
     # -----------------------------------------
     # Group chunks into articles
@@ -338,6 +345,18 @@ def generate_news_capsule(
             logger.warning("LLM failed: %s", e)
             summary_md = ""
 
+        # fallback helpers
+        def _format_hits_section(hits):
+            """Render up to three hit snippets, falling back to '- None'."""
+            if not hits:
+                return "- None"
+
+            snippets = []
+            for hit in hits[:3]:
+                snippet = hit["document"][:150].replace("\n", " ")
+                snippets.append(f"- {snippet}")
+            return "\n".join(snippets)
+
         # fallback summary
         # fallback summary
         if not summary_md:
@@ -347,15 +366,16 @@ def generate_news_capsule(
             if not short.endswith("."):
                 short += "."
 
+            pyq_section = _format_hits_section(pyq_hits)
+            syl_section = _format_hits_section(syl_hits)
+
             raw_fallback = (
                 f"### {art['title']} — Summary\n"
                 f"{short}\n\n"
                 "**Relevant PYQ**\n" +
-                "\n".join([f"- {h['document'][:150].replace('\n',' ')}" for h in pyq_hits[:3]]) +
-                ("\n" if pyq_hits else "- None\n") +
+                f"{pyq_section}\n" +
                 "\n**Relevant Syllabus**\n" +
-                "\n".join([f"- {h['document'][:150].replace('\n',' ')}" for h in syl_hits[:3]]) +
-                ("\n" if syl_hits else "- None\n")
+                f"{syl_section}\n"
             )
 
             summary_md = enforce_markdown_structure(raw_fallback, art["title"])
@@ -402,4 +422,10 @@ def generate_news_capsule(
     logger.info("Saved Markdown -> %s", md_path)
     logger.info("Saved JSON -> %s", json_path)
 
-    return md_path
+    return {
+        "md_path": md_path,
+        "json_path": json_path,
+        "date": date_str,
+        "structure": output_data,
+        "markdown": md_text,
+    }

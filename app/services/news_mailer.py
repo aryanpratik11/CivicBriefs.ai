@@ -1,20 +1,11 @@
-import json
 from pathlib import Path
-from app.services.mailer import send_email, send_mail_with_attachment
 
-SUBSCRIBERS_FILE = Path("data/subscribers.json")
+from app.services.mailer import send_mail_with_attachment
+from app.services.subscriber_store import subscriber_store
 
 
 def load_subscribers():
-    if SUBSCRIBERS_FILE.exists():
-        with open(SUBSCRIBERS_FILE, "r") as f:
-            data = json.load(f)
-
-            # Data is a list of objects [{"name":..., "email":...}]
-            if isinstance(data, list):
-                return [entry["email"] for entry in data if "email" in entry]
-
-    return []
+    return subscriber_store.list_emails()
 
 
 def send_news_capsule_email(pdf_path: str):

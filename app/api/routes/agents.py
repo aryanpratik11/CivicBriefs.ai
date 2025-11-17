@@ -1,8 +1,10 @@
 # app/api/routes/agents.py
-from fastapi import APIRouter, Body, HTTPException
+from fastapi import APIRouter, Body, Depends, HTTPException, status
 from fastapi.responses import HTMLResponse, JSONResponse
 from app.agents.news_agent import NewsAgent
 from app.agents.planner_agent import PlannerAgent
+from app.api.routes.auth import _current_user
+from app.services.report_store import report_store
 
 
 router = APIRouter(prefix="/agents", tags=["agents"])
@@ -21,7 +23,7 @@ def run_news_agent():
 
 
 @router.post("/planner")
-def generate_planner(performance: dict = Body(...)):
+def generate_planner(payload: dict = Body(...)):
     """Generate a personalized UPSC planner from the provided performance JSON.
 
     Example request body:
@@ -30,14 +32,18 @@ def generate_planner(performance: dict = Body(...)):
         "performance": {"History":52, "Polity":72, "Geography":35}
     }
     """
-    perf = performance.get("performance") if "performance" in performance else performance
+    perf = payload.get("performance") if isinstance(payload.get("performance"), dict) else payload
 
     if not isinstance(perf, dict):
         raise HTTPException(status_code=400, detail="performance must be a dict mapping subjects to scores")
 
-    user_id = performance.get("user_id") if "user_id" in performance else None
+    user_id = payload.get("user_id") if isinstance(payload, dict) else None
+    user_email = None
+    if isinstance(payload, dict):
+        user_email = payload.get("user_email") or payload.get("email")
+
     planner = PlannerAgent()
-    out = planner.generate(perf, user_id=user_id)
+    out = planner.generate(perf, user_id=user_id, user_email=user_email)
     return JSONResponse(content={"status": "success", "planner": out})
 
 
@@ -68,6 +74,15 @@ def submit_planner_test(payload: dict = Body(...)):
         raise HTTPException(status_code=400, detail=str(exc))
 
     return JSONResponse(content={"status": "success", "result": result})
+
+
+@router.get("/planner/report/latest")
+def latest_planner_report(context=Depends(_current_user)):
+    user, _ = context
+    latest = report_store.latest_for_user(user_id=user.get("id"), user_email=user.get("email"))
+    if latest is None:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="No planner reports available yet.")
+    return JSONResponse(content={"status": "success", "report": latest})
 
 
 @router.get("/planner/ui", response_class=HTMLResponse)
@@ -252,6 +267,7 @@ def planner_ui():
         .options {
             display: grid;
             gap: 10px;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
         }
 
         .option {
@@ -263,6 +279,7 @@ def planner_ui():
             padding: 10px 12px;
             cursor: pointer;
             transition: border-color 0.2s ease, background 0.2s ease;
+            width: 100%;
         }
 
         .option input {
@@ -345,6 +362,10 @@ def planner_ui():
             .section {
                 padding: 16px;
             }
+
+            .options {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -405,9 +426,17 @@ def planner_ui():
             <h2 style="margin:0 0 16px; font-size:22px;">Recommended Study Plan</h2>
             <div id="planContent" style="display:grid; gap:16px;"></div>
         </section>
+
+        <section class="card hidden" id="jsonCard">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+                <h2 style="margin:0; font-size:22px;">Raw Test Report (JSON)</h2>
+                <button class="secondary" id="downloadJsonBtn" style="white-space:nowrap;">Download JSON</button>
+            </div>
+            <pre id="jsonContent" style="max-height:320px; overflow:auto; background:#0f172a; color:#e2e8f0; padding:16px; border-radius:12px; font-size:13px; line-height:1.45;"></pre>
+        </section>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js" integrity="sha384-dnDrzCQhw3rFto/1+2cYchmtOmo/QfwzvwMlCDfLAAqj6nA5HBv0O3elBx/6CkXy" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js" integrity="sha384-NrKB+u6Ts6AtkIhwPixiKTzgSKNblyhlk0Sohlgar9UHUBzai/sgnNNWWd291xqt" crossorigin="anonymous"></script>
     <script>
     (function () {
         const state = {
@@ -434,6 +463,9 @@ def planner_ui():
             planContent: document.getElementById('planContent'),
             historyBlock: document.getElementById('historyBlock'),
             chartCanvas: document.getElementById('progressChart'),
+            jsonCard: document.getElementById('jsonCard'),
+            jsonContent: document.getElementById('jsonContent'),
+            downloadJsonBtn: document.getElementById('downloadJsonBtn'),
         };
 
         function setStatus(message, tone = '') {
@@ -463,6 +495,8 @@ def planner_ui():
             els.planCard.classList.add('hidden');
             els.historyBlock.innerHTML = '';
             els.overallScore.textContent = '';
+            els.jsonCard.classList.add('hidden');
+            els.jsonContent.textContent = '';
             if (state.chart) {
                 state.chart.destroy();
                 state.chart = null;
@@ -689,7 +723,7 @@ def planner_ui():
             });
         }
 
-        function renderPlan(plan) {
+        function renderPlan(plan, weeklySchedule) {
             els.planContent.innerHTML = '';
 
             const classification = document.createElement('div');
@@ -745,6 +779,55 @@ def planner_ui():
                 '<p style="margin:0 0 6px;">Daily Plan: MCQs ' + (plan.daily_plan ? plan.daily_plan.mcq_per_day : '-') + ', revision ' + (plan.daily_plan ? plan.daily_plan.revision_minutes : '-') + ' minutes.</p>' +
                 '<p style="margin:0;">Strategy: ' + (plan.pyq_strategy || 'Focus on latest PYQs') + '</p>';
             els.planContent.appendChild(summary);
+
+            if (weeklySchedule && (weeklySchedule.schedule_text || weeklySchedule.summary)) {
+                const schedule = document.createElement('div');
+                schedule.style.border = '1px solid var(--border)';
+                schedule.style.borderRadius = '12px';
+                schedule.style.padding = '16px';
+
+                const title = document.createElement('h3');
+                title.style.margin = '0 0 8px';
+                title.style.fontSize = '18px';
+                title.textContent = 'LLM Weekly Schedule';
+                schedule.appendChild(title);
+
+                if (weeklySchedule.summary) {
+                    const summaryLine = document.createElement('p');
+                    summaryLine.style.margin = '0 0 10px';
+                    summaryLine.style.color = 'var(--muted)';
+                    summaryLine.textContent = weeklySchedule.summary;
+                    schedule.appendChild(summaryLine);
+                }
+
+                const scheduleBody = document.createElement('div');
+                scheduleBody.style.whiteSpace = 'pre-line';
+                scheduleBody.style.fontFamily = "'SFMono-Regular', 'Consolas', 'Liberation Mono', monospace";
+                scheduleBody.style.fontSize = '14px';
+                scheduleBody.style.lineHeight = '1.45';
+                scheduleBody.textContent = weeklySchedule.schedule_text || 'Schedule not available.';
+                schedule.appendChild(scheduleBody);
+
+                if (weeklySchedule.allocations) {
+                    const allocTitle = document.createElement('p');
+                    allocTitle.style.margin = '12px 0 4px';
+                    allocTitle.style.fontWeight = '600';
+                    allocTitle.textContent = 'Weekly hour allocations:';
+                    schedule.appendChild(allocTitle);
+
+                    const allocList = document.createElement('ul');
+                    allocList.style.margin = '0';
+                    allocList.style.paddingLeft = '18px';
+                    Object.entries(weeklySchedule.allocations).forEach(([subject, hours]) => {
+                        const li = document.createElement('li');
+                        li.textContent = subject + ': ' + hours + ' hrs';
+                        allocList.appendChild(li);
+                    });
+                    schedule.appendChild(allocList);
+                }
+
+                els.planContent.appendChild(schedule);
+            }
         }
 
         function handleReport(data) {
@@ -755,7 +838,33 @@ def planner_ui():
             renderSections(data.section_report);
             renderChart(data.section_report);
             renderHistory(data.history);
-            renderPlan(data.study_plan);
+            renderPlan(data.study_plan, data.weekly_schedule);
+            renderJson(data);
+        }
+
+        function renderJson(data) {
+            if (!data) {
+                els.jsonCard.classList.add('hidden');
+                return;
+            }
+
+            const serialized = JSON.stringify(data, null, 2);
+            els.jsonContent.textContent = serialized;
+            els.jsonCard.classList.remove('hidden');
+
+            if (els.downloadJsonBtn) {
+                els.downloadJsonBtn.onclick = () => {
+                    const blob = new Blob([serialized], { type: 'application/json' });
+                    const url = URL.createObjectURL(blob);
+                    const anchor = document.createElement('a');
+                    anchor.href = url;
+                    anchor.download = 'planner-test-report.json';
+                    document.body.appendChild(anchor);
+                    anchor.click();
+                    document.body.removeChild(anchor);
+                    URL.revokeObjectURL(url);
+                };
+            }
         }
 
         async function submitTest() {

@@ -35,6 +35,7 @@ from app.utils.llm_utils import local_llama_call
 from app.utils.markdown_utils import format_snippets_for_prompt
 from app.utils.pdf_utils import build_pdf_from_markdown
 from app.services.news_mailer import send_news_capsule_email
+from app.services.news_store import news_store
 
 # -----------------------
 # Setup NLTK
@@ -133,6 +134,15 @@ def l2_normalize(a: np.ndarray) -> np.ndarray:
     norm = np.linalg.norm(a, axis=-1, keepdims=True)
     norm[norm == 0] = 1e-8
     return a / norm
+
+
+def _format_hit_lines(hits: List[Dict[str, Any]], limit: int = 3) -> str:
+    lines = []
+    for hit in hits[:limit]:
+        snippet = str(hit.get("document", ""))[:200].replace("\n", " ").strip()
+        if snippet:
+            lines.append(f"- {snippet}")
+    return "\n".join(lines) if lines else "- None"
 
 
 # -----------------------
@@ -311,12 +321,10 @@ def run(fetch_limit: int = 30):
             summary_md = (
                 f"### {art['title']} — Summary\n"
                 f"{' '.join(sents[:2])}\n\n"
-                "**Relevant PYQ**\n" +
-                ("\n".join([f"- {h['document'][:200].replace('\n',' ')}"
-                            for h in pyq_hits[:3]]) or "- None") +
-                "\n\n**Relevant Syllabus**\n" +
-                ("\n".join([f"- {h['document'][:200].replace('\n',' ')}"
-                            for h in syl_hits[:3]]) or "- None")
+                "**Relevant PYQ**\n"
+                f"{_format_hit_lines(pyq_hits)}\n\n"
+                "**Relevant Syllabus**\n"
+                f"{_format_hit_lines(syl_hits)}"
             )
 
         # Store result
@@ -354,6 +362,16 @@ def run(fetch_limit: int = 30):
         json.dump(output, f, indent=2)
 
     logger.info("Markdown & JSON saved.")
+
+    persisted = news_store.save_capsule(
+        capsule_payload={"structure": output, "markdown": md_text},
+        capsule_date=TODAY,
+        capsule_type="daily",
+    )
+    if persisted:
+        logger.info("News capsule stored in MongoDB collection 'news'.")
+    else:
+        logger.warning("News capsule could not be stored in MongoDB. Continuing with local artifacts.")
 
     # -----------------------
     # Step 6 — Build PDF + Email

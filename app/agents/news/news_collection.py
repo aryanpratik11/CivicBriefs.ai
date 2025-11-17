@@ -5,6 +5,7 @@ import uuid
 import re
 from datetime import datetime, timedelta
 from typing import List, Dict, Any, Optional
+from zipfile import BadZipFile
 
 import requests
 from bs4 import BeautifulSoup
@@ -15,15 +16,27 @@ from sentence_transformers import SentenceTransformer
 
 # text
 import nltk
-try:
-    nltk.data.find('tokenizers/punkt')
-except LookupError:
-    nltk.download("punkt", quiet=True)
 
-try:
-    nltk.data.find('tokenizers/punkt_tab')
-except LookupError:
-    nltk.download("punkt_tab", quiet=True)
+
+def ensure_nltk_resource(resource_key: str, download_name: Optional[str] = None) -> None:
+    """Ensure required NLTK resource exists, re-downloading if corrupt."""
+    logger = logging.getLogger("news_collection")
+    try:
+        nltk.data.find(resource_key)
+        return
+    except LookupError:
+        logger.info("NLTK resource %s missing. Downloading...", resource_key)
+    except Exception as exc:
+        if isinstance(exc, BadZipFile):
+            logger.warning("NLTK resource %s appears corrupted. Re-downloading...", resource_key)
+        else:
+            logger.warning("Error loading NLTK resource %s (%s). Re-downloading...", resource_key, exc)
+
+    nltk.download(download_name or resource_key.split("/")[-1], quiet=True, force=True)
+
+
+ensure_nltk_resource("tokenizers/punkt", "punkt")
+ensure_nltk_resource("tokenizers/punkt_tab", "punkt_tab")
 
 from nltk.tokenize import sent_tokenize
 

@@ -10,6 +10,7 @@ from app.agents.news.news_collection import collect_news_embeddings
 from app.agents.news.generate_news_capsule import generate_news_capsule
 from app.utils.pdf_utils import build_pdf_from_markdown
 from app.services.news_mailer import send_news_capsule_email
+from app.services.news_store import news_store
 
 from datetime import datetime, date
 today = date.today().isoformat()
@@ -96,8 +97,25 @@ class NewsAgent:
             # STEP 5: Generate Markdown Capsule
             # --------------------------------------------------
             print("📝 Generating Markdown News Capsule...")
-            md_path = generate_news_capsule(embeddings)
+            capsule_artifacts = generate_news_capsule(embeddings)
+            md_path = capsule_artifacts["md_path"]
             print(f"✓ Markdown capsule created → {md_path}\n")
+
+            # --------------------------------------------------
+            # STEP 5b: Persist capsule to MongoDB Atlas
+            # --------------------------------------------------
+            persisted = news_store.save_capsule(
+                capsule_payload={
+                    "structure": capsule_artifacts.get("structure", {}),
+                    "markdown": capsule_artifacts.get("markdown", ""),
+                },
+                capsule_date=capsule_artifacts.get("date"),
+                capsule_type="daily",
+            )
+            if persisted:
+                print("✓ Capsule stored in MongoDB Atlas.")
+            else:
+                print("⚠ Could not persist capsule to MongoDB Atlas. Continuing anyway.")
 
             # --------------------------------------------------
             # STEP 6: Convert Markdown to PDF
@@ -128,6 +146,7 @@ class NewsAgent:
                 "summary": summary_path,
                 "embeddings": full_path,
                 "markdown": md_path,
+                "json": capsule_artifacts.get("json_path"),
                 "pdf": pdf_path
             }
 
