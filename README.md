@@ -580,14 +580,13 @@ Please open issues and PRs on GitHub. If you plan a large change, open an issue 
 This repository does not include a license file by default. Add a LICENSE (e.g., MIT) if you want permissive reuse.
 
 ## Authors
-- **Aryan Pratik**     — original project author
-- **Pavan Kumar**      - Contributor
-- **Aditya Gupta**     - Contributor
+- [@aryanpratik11](https://github.com/aryanpratik11)    — original project author
+- [@Pavan-Kumar-Z](https://github.com/Pavan-Kumar-Z)      - Contributor
+- [@mrGupta04](https://github.com/mrGupta04)    - Contributor
 - **Deepak Sharma**    - Contributor
-- **Aman Chaurasia**   - Contributor
+- [@aman18Chaurasia](https://github.com/aman18Chaurasia)   - Contributor
 - Contributors — see GitHub repo for full list
 
-GitHub: [@aryanpratik11](https://github.com/aryanpratik11)
 
 ## Contact & Support
 Open an issue on the repository for bugs, feature requests, or questions.
